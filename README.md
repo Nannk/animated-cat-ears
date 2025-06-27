@@ -92,7 +92,7 @@ A --FFT--> I[Acceleration Spectrum];
 I --> J[Determine Peaks and their Magnitude];
 B --FFT--> K[Rotation Spectrum];
 K --> L[Determine Peaks and their Magnitude];
-L --> M[Compare with predefined Values];
+L --> M[Compare with predefined Values - cross correlation funciton];
 J --> M;
 M --> N[choose_pose];
 N --> G;
