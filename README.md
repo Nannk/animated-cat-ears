@@ -14,8 +14,8 @@ esp for reading sensors + servo control.
     - [x] 2.1. Poses (see poses.cpp)
     - [x] 2.2. Servo output (PWM)
     - [ ] 2.3. SPI
-    - [ ] 2.4. FFT
-    - [ ] 2.5. That Magic part of pose selection i still have no idea how to implement
+    - [ ] 2.4. Convolution
+    - [ ] 2.5. Peak detector and multithreading
     - [ ] 2.6. Kalman Filter
     - [ ] 2.7. Attitude + Gyroscope rotation to angle adjustment
     - [ ] 2.8. \[optional\] Add thermometer or utilise the built-in one for temperature-dependent reactions
@@ -49,22 +49,22 @@ esp for reading sensors + servo control.
       - [hideakitai/MPU9250](https://github.com/hideakitai/MPU9250) - with what appears to be a Kalman Filter.
       - [MPU9250_asukiaaa](https://github.com/asukiaaa/MPU9250_asukiaaa) - Library that can return raw data, using it right now.
     - [x] Get raw IMU data
-    - [ ] Kalman Filter for attitude aquisition (there was already a lib for that, might just use it. although i need raw data for FFT)
-    - [ ] Direction is dx/dt
   - [ ] MCU <-> PC Communication
     - [ ] Determine protocol with little overhead
     - [ ] Implement that protocol
       - [ ] PC side: python
       - [ ] MCU side: ???
   - [ ] MCU DSP
-   - [ ] servo position as f(dv/dt, d phi/dt)
-    - [ ] Algorithm
-    - [ ] Implementation
+    - [ ] servo position as f(da/dt, dalpha/dt)
+      - [ ] Algorithm
+      - [ ] Implementation
   - [ ] DSP 
-    - [x] Fold function for floats
+    - [ ] Kalman Filter for attitude acquisition
+    - [ ] Direction is dx/dt
+    - [ ] Convolution function for floats
     - [ ] Peak search
     - [ ] Decider and pose selector
-    - [ ] Record/generate IMU Signal samples to compare to
+    - [ ] Record/generate IMU Signal samples for Convolution
     - [ ] \[optional\] Temperature and/or dTemp/dTime dependent reactions?
 
 
