@@ -31,7 +31,7 @@
       - MCU: NodeMcuv2 (ESP8266) for servo control, RPi0W for data processing.
       - IMU: GY-91 IMU Board through SPI (MPU9250, BMP280) 6 Axis Gyro+Accelerometer, 3 Axis Magnetometer AK8963, Temperature and Pressure sensor BMP280
     - [x] change Voltage regulator to ams1117 
-    - [ ] Make a power distribution board (2 ams1117 in parallel for 3 small servos)
+    - [x] Make a power distribution board (2 ams1117 in parallel for 3 small servos)
     - [ ] Model all hardware into the Project (uncluding headband, CU usw)
   - [ ] Fluff (Fur) - [this?](https://www.amazon.de/WLLHYF-zotteligen-flauschige-Stuhlabdeckung-Weihnachten/dp/B0BJKKF45H) (a combination of white & black? pink insides?)
 
@@ -42,21 +42,34 @@
   - [x] IMU Data
     - [x] Find a Library (depends on hardware IMU)
       - [hideakitai/MPU9250](https://github.com/hideakitai/MPU9250) - with what appears to be a Kalman Filter.
-      - [MPU9250_asukiaaa](https://github.com/asukiaaa/MPU9250_asukiaaa) - Library that can return raw data, i am using it right now.
+      - [MPU9250_asukiaaa](https://github.com/asukiaaa/MPU9250_asukiaaa) - Library that can return raw data, using it right now.
     - [x] Get raw IMU data
     - [ ] Kalman Filter for attitude aquisition (there was already a lib for that, might just use it. although i need raw data for FFT)
-    - [ ] How to detect the direction of a movement? From averaged Kalman Filter data?
-  - [ ] IMU Data processing
-    - [x] FFT  
-    - [ ] IMU Data samples to compare to
-    - [ ] Temperature and/or dTemp/dTime dependent reactions?
+    - [ ] Direction is dx/dt
+  - [ ] MCU <-> PC Communication
+    - [ ] Determine protocol with little overhead
+    - [ ] Implement that protocol
+      - [ ] PC side: python
+      - [ ] MCU side: ???
+  - [ ] MCU DSP
+   - [ ] servo position as f(dv/dt, d phi/dt)
+    - [ ] Algorithm
+    - [ ] Implementation
+  - [ ] DSP 
+    - [x] Fold function for floats
+    - [ ] Peak search
+    - [ ] Decider and pose selector
+    - [ ] Record/generate IMU Signal samples to compare to
+    - [ ] \[optional\] Temperature and/or dTemp/dTime dependent reactions?
+
 
 ## 1.2.1 RTOS Task graph
+Outdated
 ```mermaid
 graph TD;
 A[Task: 
   Read data from SPI] -- IMU data --> B[Task: 
-  Perform FFT];
+  Perform Convolution];
 A -- IMU data--> C[Task: 
   use Kalman Filter];
 B -- Peaks: 
@@ -83,13 +96,8 @@ D --> F[Ear::set_ear_position];
 E--> F;
 F --> G[Ear::move_to_set_angles];
 
-A --FFT--> I[Acceleration Spectrum];
-I --> J[Determine Peaks and their Magnitude];
-B --FFT--> K[Rotation Spectrum];
-K --> L[Determine Peaks and their Magnitude];
-L --> M[Compare with predefined Values];
-J --> M;
-M --> N[choose_pose];
+A --Convolution w. template--> N[choose_pose];
+B --Convolution w. template--> N;
 N --> G;
 ```
 
