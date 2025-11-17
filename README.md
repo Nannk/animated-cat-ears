@@ -1,5 +1,10 @@
 # 猫耳を活気づけて ("Animated Cat Ears")
 
+Update 25-06-2025:
+Signal processing in matlab on pc
+esp for reading sensors + servo control.
+
+
 ## TODO List
 ### new
   - [x] 1. Switch to eps8266-rtos-sdk :skull:
