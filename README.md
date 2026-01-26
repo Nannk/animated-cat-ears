@@ -1,8 +1,7 @@
-# 猫耳を活気づけて ("Animated Cat Ears")
+# Articulated (animated) cat ears
 
-Update 25-06-2025:
-Signal processing in matlab on pc
-esp for reading sensors + servo control.
+- Signal processing in matlab on pc 
+- esp for reading sensors + servo control.
 
 
 ## TODO List
@@ -19,9 +18,23 @@ esp for reading sensors + servo control.
     - [ ] 2.6. Kalman Filter
     - [ ] 2.7. Attitude + Gyroscope rotation to angle adjustment
     - [ ] 2.8. \[optional\] Add thermometer or utilise the built-in one for temperature-dependent reactions
+    - [ ] 2.9 MCU <-> PC Communication
+      - [ ] 2.9.1 Determine protocol with little overhead
+      - [ ] 2.9.2 Implement that protocol
+        - [ ] 2.9.2.1 PC side: python
+        - [ ] 2.9.2.2 MCU side: ???
+    - [ ] 2.10 DSP 
+      - [ ] 2.10.1 Kalman Filter for attitude acquisition
+      - [ ] 2.10.2 Moment direction is -da/dt
+      - [ ] 2.10.3 Convolution function for floats
+      - [ ] 2.10.4 Peak search
+      - [ ] 2.10.5 Decider and pose selector
+      - [ ] 2.10.6 Record/generate IMU Signal samples for Convolution
+      - [ ] 2.10.7 \[optional\] Temperature and/or dTemp/dTime dependent reactions?
+
   - [ ] 3. Hardware 
-    - [ ] 3.1. Find a way to fix Axles (Büroklammern) in place
-    - [ ] 3.2. Wire second AMS1117 on the prototyping board
+    - [x] 3.1. Find a way to fix Axles (Büroklammern) in place
+    - [x] 3.2. Wire second AMS1117 on the prototyping board
     - [ ] 3.3. Model all the hardware into the CAD project
     - [ ] 3.4. Make a board in KiCAD (most definitely for a PCB manufacturer)
     - [ ] 3.5. Decide on the Fur
@@ -49,23 +62,6 @@ esp for reading sensors + servo control.
       - [hideakitai/MPU9250](https://github.com/hideakitai/MPU9250) - with what appears to be a Kalman Filter.
       - [MPU9250_asukiaaa](https://github.com/asukiaaa/MPU9250_asukiaaa) - Library that can return raw data, using it right now.
     - [x] Get raw IMU data
-  - [ ] MCU <-> PC Communication
-    - [ ] Determine protocol with little overhead
-    - [ ] Implement that protocol
-      - [ ] PC side: python
-      - [ ] MCU side: ???
-  - [ ] MCU DSP
-    - [ ] servo position as f(da/dt, dalpha/dt)
-      - [ ] Algorithm
-      - [ ] Implementation
-  - [ ] DSP 
-    - [ ] Kalman Filter for attitude acquisition
-    - [ ] Direction is dx/dt
-    - [ ] Convolution function for floats
-    - [ ] Peak search
-    - [ ] Decider and pose selector
-    - [ ] Record/generate IMU Signal samples for Convolution
-    - [ ] \[optional\] Temperature and/or dTemp/dTime dependent reactions?
 
 
 ## 1.2.1 RTOS Task graph
@@ -145,6 +141,7 @@ Second digit: Ears opennnes
 
 ### servos
 #### 2g servos
+```text
 Brand:Surpass Hobby
 S0002P 2g plastic gear digital servo
 Voltage: 3.7\~4.2V DC
@@ -156,6 +153,8 @@ Weight: 2.2 g
 Size: 16.7 × 8.2 × 17mm
 Shell material: ABS
 Motor type: hollow cup motor
-
+```
 #### 9g servos
+```text
 TowerPro sg90 (i guess knock-offs)
+```
