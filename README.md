@@ -18,19 +18,19 @@
     - [ ] 2.6. Kalman Filter
     - [ ] 2.7. Attitude + Gyroscope rotation to angle adjustment
     - [ ] 2.8. \[optional\] Add thermometer or utilise the built-in one for temperature-dependent reactions
-    - [ ] 2.9 MCU <-> PC Communication
-      - [ ] 2.9.1 Determine protocol with little overhead
-      - [ ] 2.9.2 Implement that protocol
-        - [ ] 2.9.2.1 PC side: python
-        - [ ] 2.9.2.2 MCU side: ???
-    - [ ] 2.10 DSP 
-      - [ ] 2.10.1 Kalman Filter for attitude acquisition
-      - [ ] 2.10.2 Moment direction is -da/dt
-      - [ ] 2.10.3 Convolution function for floats
-      - [ ] 2.10.4 Peak search
-      - [ ] 2.10.5 Decider and pose selector
-      - [ ] 2.10.6 Record/generate IMU Signal samples for Convolution
-      - [ ] 2.10.7 \[optional\] Temperature and/or dTemp/dTime dependent reactions?
+    - [ ] 2.9. MCU <-> PC Communication
+      - [ ] 2.9.1. Determine protocol with little overhead
+      - [ ] 2.9.2. Implement that protocol
+        - [ ] 2.9.2.1. PC side: python
+        - [ ] 2.9.2.2. MCU side: ???
+    - [ ] 2.10. DSP 
+      - [ ] 2.10.1. Kalman Filter for attitude acquisition
+      - [ ] 2.10.2. Moment direction is -da/dt
+      - [ ] 2.10.3. Convolution function for floats
+      - [ ] 2.10.4. Peak search
+      - [ ] 2.10.5. Decider and pose selector
+      - [ ] 2.10.6. Record/generate IMU Signal samples for Convolution
+      - [ ] 2.10.7. \[optional\] Temperature and/or dTemp/dTime dependent reactions?
 
   - [ ] 3. Hardware 
     - [x] 3.1. Find a way to fix Axles (Büroklammern) in place
@@ -40,6 +40,7 @@
     - [ ] 3.5. Decide on the Fur
   - [ ] 4. Misc
     - [ ] 4.1. Clean up README (make it actually readable)
+    - [ ] 4.2. Add schematic of the mcu board
 
 ### old
 - [ ] Hardware 
